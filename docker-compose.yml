@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  rick-and-morty:
+    container_name: rick-and-morty
+    restart: always
+    image: rick-and-morty
+    hostname: rick-and-morty
+    build:
+      context: ./rick-and-morty
+      dockerfile: ./Dockerfile
+    ports:
+      - "3001:3001"
+    networks:
+      - network
+    volumes:
+      - ./rick-and-morty:/app
+    env_file:
+    - rick-and-morty/.env
+volumes:
+  rick-and-morty_data:
+networks:
+  network:
